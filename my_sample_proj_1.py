@@ -49,3 +49,4 @@ drinks[my_cols]
 # add a new column as a function of existing columns
 drinks['total_servings'] = drinks.beer_servings + drinks.spirit_servings + drinks.wine_servings
 drinks.head()
+print ("Hi Running from Jenkins")
