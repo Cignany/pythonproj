@@ -1,7 +1,7 @@
 # imports
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 
 '''
@@ -15,7 +15,7 @@ type(drinks)
 
 # examine the data
 drinks                  # print the first 30 and last 30 rows
-drinks.head()           # print the first 5 rows
+drinks.head()           # print the first 5 rows.
 drinks.tail()           # print the last 5 rows
 drinks.describe()       # describe any numeric columns
 drinks.info()           # concise summary
