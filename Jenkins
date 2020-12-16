@@ -2,7 +2,7 @@ pipeline {
   agent any
    stages { 
 	stage('git checkout'){
-	   step {
+	   steps {
 	    script {
       try {
           git branch: 'dev_1', url: 'https://github.com/Cignany/pythonproj'
@@ -13,7 +13,7 @@ pipeline {
    }
    }
 	stage('Verify S3 setup') {
-	   step{ 
+	   steps { 
 	    script {
        try {
       // you need cloudbees aws credentials
@@ -27,7 +27,7 @@ pipeline {
 }   
   }   
    stage('PushingCode  to s3') {
-      step { 
+      steps { 
 	    script {
        try {
       // you need cloudbees aws credentials
