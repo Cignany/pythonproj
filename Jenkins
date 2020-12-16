@@ -1,9 +1,9 @@
 pipeline {
   agent any
-node('master'){
+   {
    stage('git checkout'){
       try {
-      git branch: 'dev_1', url: 'https://github.com/Cignany/pythonproj'
+          git branch: 'dev_1', url: 'https://github.com/Cignany/pythonproj'
       } catch(err) {
          sh "echo error in checkout"
       }
