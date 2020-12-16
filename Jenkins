@@ -1,14 +1,17 @@
 pipeline {
   agent any
    stages { 
-	  stage('git checkout'){
+	stage('git checkout'){
+	   step {
       try {
           git branch: 'dev_1', url: 'https://github.com/Cignany/pythonproj'
       } catch(err) {
          sh "echo error in checkout"
       }
    }
-	 stage('Verify S3 setup') {
+   }
+	stage('Verify S3 setup') {
+	   step{
        try {
       // you need cloudbees aws credentials
       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'Rp_AWS_Credential', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY', correctClockSkew: true]])  {
@@ -17,8 +20,10 @@ pipeline {
       } catch(err) {
          sh "echo error in sending artifacts to s3"
       }
-   }     
+   }  
+  }   
    stage('PushingCode  to s3') {
+      step {
        try {
       // you need cloudbees aws credentials
       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'Rp_AWS_Credential', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY', correctClockSkew: true]])  {
@@ -29,6 +34,7 @@ pipeline {
       } catch(err) {
          sh "echo error in sending artifacts to s3"
       }
+   }
    }
  }
 } 
